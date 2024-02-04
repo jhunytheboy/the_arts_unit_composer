@@ -50,15 +50,15 @@
         "drupal/csv_importer": "^1.11",
         "drupal/csv_serialization": "^3.0",
         "drupal/ctools": "^3.9",
-        "drupal/devel": "^4.0",
+        "drupal/devel": "^5.0",
         "drupal/diff": "^1.0",
         "drupal/ds": "^3.9",
         "drupal/entity_browser": "^2.6",
         "drupal/entity_embed": "^1.1",
-        "drupal/entity_export_csv": "^1.0@beta",
+        "drupal/entity_export_csv": "^2.0@beta",
         "drupal/entity_hierarchy": "^3.0",
         "drupal/entity_print": "^2.6",
-        "drupal/entity_reference_display": "^1.4",
+        "drupal/entity_reference_display": "^2.0",
         "drupal/entity_reference_unpublished": "^2.0",
         "drupal/examples": "^4.0",
         "drupal/field_group": "^3.1",
@@ -73,11 +73,11 @@
         "drupal/image_url_formatter": "^1.0",
         "drupal/image_widget_crop": "^2.3",
         "drupal/inline_entity_form": "^1.0@RC",
-        "drupal/jquery_ui_accordion": "^1.1",
+        "drupal/jquery_ui_accordion": "^2.0",
         "drupal/layout_builder_ids": "^2.0@RC",
         "drupal/layout_builder_modal": "^1.2",
         "drupal/layout_builder_styles": "^2.0",
-        "drupal/linkchecker": "^1.0@beta",
+        "drupal/linkchecker": "^1.1",
         "drupal/linkit": "^6.0@beta",
         "drupal/linkit_media_library": "^1.0",
         "drupal/login_destination": "^2.0@beta",
@@ -228,7 +228,8 @@
         },
         "merge-plugin": {
             "include": [
-                "web/modules/contrib/webform/composer.libraries.json"
+                "web/modules/contrib/webform/composer.libraries.json",
+                "web/modules/contrib/media_directories/composer.libraries.json"
             ]
         }
     }
