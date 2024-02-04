@@ -1,0 +1,13 @@
+diff --git a/a/src/Form/WebformEntityFilterForm.php b/b/src/Form/WebformEntityFilterForm.php
+index 899fed7..9de2ab1 100644
+--- a/a/src/Form/WebformEntityFilterForm.php
++++ b/b/src/Form/WebformEntityFilterForm.php
+@@ -95,7 +95,7 @@ class WebformEntityFilterForm extends FormBase {
+     $state = $form_state->getValue('state') ?? '';
+     $query = [
+       'search' => trim($search),
+-      'category ' => trim($category),
++      'category' => trim($category),
+       'state' => trim($state),
+     ];
+     $form_state->setRedirect($this->getRouteMatch()->getRouteName(), $this->getRouteMatch()->getRawParameters()->all(), [

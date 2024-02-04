@@ -1,0 +1,8 @@
+*
+!.gitignore
+!composer.json
+!private/
+private/*
+!private/patches/
+private/patches/*
+!private/patches/*.patch
