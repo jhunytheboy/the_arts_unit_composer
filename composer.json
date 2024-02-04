@@ -221,9 +221,6 @@
             "drupal/ds": {
                 "Undefined index: #type in _ds_field_ui_table_layout()": "https://www.drupal.org/files/issues/2021-07-29/ds-undefined-index-type-3091319-14.patch"
             },
-            "drupal/color_field": {
-                "PHP 8.1: Implicit incompatible float to int conversion is deprecated (https://www.drupal.org/project/color_field/issues/3294527)": "private/patches/color_field.patch"
-            },
             "drupal/mailchimp": {
                 "Do not duplicate HTML IDs": "https://www.drupal.org/files/issues/2022-04-04/drupal_mailchimp-3229352-No-duplicate-DOM-IDs.patch"
             },
