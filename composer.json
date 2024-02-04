@@ -38,7 +38,7 @@
         "drupal/ckeditor_div_manager": "^2.1",
         "drupal/ckeditor_entity_link": "^1.2",
         "drupal/ckeditor_iframe": "^2.1",
-        "drupal/color_field": "^2.4",
+        "drupal/color_field": "^3.0",
         "drupal/conditional_fields": "^4.0@alpha",
         "drupal/config_backup": "^1.0",
         "drupal/config_entity_revisions": "^2.0",
