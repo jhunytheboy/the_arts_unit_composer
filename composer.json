@@ -36,7 +36,6 @@
         "drupal/ckeditor_bootstrap_table": "^1.2",
         "drupal/ckeditor_bs_grid": "^2.0",
         "drupal/ckeditor_div_manager": "^2.1",
-        "drupal/ckeditor_entity_link": "^1.2",
         "drupal/ckeditor_iframe": "^2.1",
         "drupal/color_field": "^3.0",
         "drupal/conditional_fields": "^4.0@alpha",
