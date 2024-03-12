@@ -1,0 +1,15 @@
+diff --git a/linkchecker.redirect.inc b/linkchecker.redirect.inc
+index 71db013..5db9f9b 100644
+--- a/linkchecker.redirect.inc
++++ b/linkchecker.redirect.inc
+@@ -76,7 +76,8 @@ function _linkchecker_redirect_reset(array $urls = []) {
+     $num_updated++;
+   }
+ 
+-  if ($num_updated) {
++  /* 2024-03-11 this message is confusing end-users and is not very useful */
++  /*if ($num_updated) {
+     \Drupal::messenger()->addMessage(t('The link %url will be checked again on the next cron run.', ['%url' => $urls[0]]));
+-  }
++  }*/
+ }

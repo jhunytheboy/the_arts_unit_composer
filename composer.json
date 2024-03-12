@@ -225,6 +225,9 @@
             },
             "drupal/backup_migrate" : {
                 "Add Drush command for running a quick backup (https://www.drupal.org/project/backup_migrate/issues/3223057)": "https://www.drupal.org/files/issues/2021-12-02/3223057-17.patch"
+            },
+            "drupal/linkchecker" : {
+                "Remove redirect checker" : "private/patches/linkchecker-remove-redirect-message.patch"
             }
         },
         "merge-plugin": {
