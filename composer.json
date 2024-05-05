@@ -226,6 +226,9 @@
             },
             "drupal/linkchecker" : {
                 "Remove redirect checker" : "private/patches/linkchecker-remove-redirect-message.patch"
+            },
+            "drupal/fullcalendar_view" : {
+                "Disable ajaxcomplete (based on https://www.drupal.org/project/fullcalendar_view/issues/3323399 )": "private/patches/fullcalendar_view-disable-ajaxcomplete.patch"
             }
         },
         "merge-plugin": {
