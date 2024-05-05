@@ -116,6 +116,7 @@
         "drupal/symfony_mailer": "^1.2",
         "drupal/taxonomy_manager": "^2.0",
         "drupal/term_csv_export_import": "^3.0@alpha",
+        "drupal/theme_permission": "^2.0",
         "drupal/token": "1.12",
         "drupal/total_control": "^3.0",
         "drupal/tvi": "^1.0@RC",
@@ -219,9 +220,6 @@
             },
             "drupal/ckeditor_accordion": {
                 "HTML in tab head (https://www.drupal.org/project/ckeditor_accordion/issues/3355048)": "https://git.drupalcode.org/project/ckeditor_accordion/-/merge_requests/7.diff"
-            },
-            "drupal/fullcalendar_view": {
-                "Use drupal modal window instead of ugly js pop window (https://www.drupal.org/project/fullcalendar_view/issues/3256576)": "https://www.drupal.org/files/issues/2022-12-01/fullcalendar_view-3256576-modal-8.patch"
             },
             "drupal/backup_migrate" : {
                 "Add Drush command for running a quick backup (https://www.drupal.org/project/backup_migrate/issues/3223057)": "https://www.drupal.org/files/issues/2021-12-02/3223057-17.patch"
