@@ -229,6 +229,9 @@
             },
             "drupal/fullcalendar_view" : {
                 "Disable ajaxcomplete (based on https://www.drupal.org/project/fullcalendar_view/issues/3323399 )": "private/patches/fullcalendar_view-disable-ajaxcomplete.patch"
+            },
+            "drupal/core" : {
+                "New option for Views page displays to use the admin theme (https://www.drupal.org/project/drupal/issues/2719797)" : "https://www.drupal.org/files/issues/2023-05-05/2719797-201.patch"
             }
         },
         "merge-plugin": {
