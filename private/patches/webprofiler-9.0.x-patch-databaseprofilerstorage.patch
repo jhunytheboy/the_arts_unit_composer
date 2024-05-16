@@ -1,0 +1,13 @@
+diff --git a/src/Profiler/DatabaseProfilerStorage.php b/src/Profiler/DatabaseProfilerStorage.php
+index b698b5e..4b41b94 100644
+--- a/src/Profiler/DatabaseProfilerStorage.php
++++ b/src/Profiler/DatabaseProfilerStorage.php
+@@ -42,7 +42,7 @@ class DatabaseProfilerStorage implements ProfilerStorageInterface {
+       $end = time();
+     }
+ 
+-    if ($ip = preg_replace('/[^\d\.]/', '', $ip)) {
++    if ($ip != NULL && $ip = preg_replace('/[^\d\.]/', '', $ip)) {
+       $select->condition('ip', '%' . $this->database->escapeLike($ip) . '%', 'LIKE');
+     }
+ 

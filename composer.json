@@ -12,11 +12,38 @@
         {
             "type": "composer",
             "url": "https://packages.drupal.org/8"
-        }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "d3/d3",
+                "version": "v3.5.17",
+                "type": "drupal-library",
+                "source": {
+                    "url": "https://github.com/d3/d3.git",
+                    "type": "git",
+                    "reference": "tags/v3.5.17"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "highlightjs/highlightjs",
+                "version": "11.2.0",
+                "type": "drupal-library",
+                "source": {
+                    "url": "https://github.com/highlightjs/highlight.js.git",
+                    "type": "git",
+                    "reference": "tags/11.2.0"
+                }
+            }
+        }        
     ],
     "require": {
         "composer/installers": "^1.2",
         "cweagans/composer-patches": "~1.0",
+        "d3/d3": "^3.5",
         "defuse/php-encryption": "^2.3",
         "drupal/address": "^1.9",
         "drupal/address_map_link": "^1.2",
@@ -59,6 +86,7 @@
         "drupal/entity_print": "^2.6",
         "drupal/entity_reference_display": "^2.0",
         "drupal/entity_reference_unpublished": "^2.0",
+        "drupal/environment_indicator": "^4.0",
         "drupal/examples": "^4.0",
         "drupal/field_group": "^3.1",
         "drupal/field_permissions": "^1.2",
@@ -116,6 +144,7 @@
         "drupal/symfony_mailer": "^1.2",
         "drupal/taxonomy_manager": "^2.0",
         "drupal/term_csv_export_import": "^3.0@alpha",
+        "drupal/term_merge": "^2.0@beta",
         "drupal/theme_permission": "^2.0",
         "drupal/token": "1.12",
         "drupal/total_control": "^3.0",
@@ -131,14 +160,17 @@
         "drupal/views_bulk_operations": "^4.1",
         "drupal/views_conditional": "*",
         "drupal/views_data_export": "^1.0",
+        "drupal/views_expandable_table": "^1.0@RC",
         "drupal/viewsreference": "*",
         "drupal/webform": "^6.2",
         "drupal/webform_entity_view": "^1.0",
         "drupal/webform_spam_words": "^2.0",
         "drupal/webform_xlsx_export": "^1.0",
+        "drupal/webprofiler": "^9.0",
         "drupal/weight": "^3.3",
         "drupal/yaml_editor": "^1.1",
         "drush/drush": "11.*",
+        "highlightjs/highlightjs": "^11.2",
         "kint-php/kint": "^3.3",
         "vimeo/vimeo-api": "*",
         "wikimedia/composer-merge-plugin": "^2.1"
@@ -232,6 +264,10 @@
             },
             "drupal/core" : {
                 "New option for Views page displays to use the admin theme (https://www.drupal.org/project/drupal/issues/2719797)" : "https://www.drupal.org/files/issues/2023-05-05/2719797-201.patch"
+            },
+            "drupal/webprofiler" : { 
+                "foreach() argument must be of type array|object, null given in EventsDataCollector->lateCollect() line 54" : "private/patches/webprofiler-9.0.x-patch-eventsdatacollector.patch",
+                "preg_replace(): Passing null to parameter #3 ($subject) of type array|string is deprecated in DatabaseProfilerStorage->find() line 45" : "private/patches/webprofiler-9.0.x-patch-databaseprofilerstorage.patch"
             }
         },
         "merge-plugin": {

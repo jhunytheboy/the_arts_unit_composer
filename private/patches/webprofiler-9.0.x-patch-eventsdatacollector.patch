@@ -1,0 +1,23 @@
+diff --git a/src/DataCollector/EventsDataCollector.php b/src/DataCollector/EventsDataCollector.php
+index c5385df..67fd200 100644
+--- a/src/DataCollector/EventsDataCollector.php
++++ b/src/DataCollector/EventsDataCollector.php
+@@ -51,11 +51,13 @@ class EventsDataCollector extends DataCollector implements DrupalDataCollectorIn
+     if ($this->eventDispatcher instanceof EventDispatcherTraceableInterface) {
+       $countCalled = 0;
+       $calledListeners = $this->eventDispatcher->getCalledListeners();
+-      foreach ($calledListeners as &$events) {
+-        foreach ($events as &$priority) {
+-          foreach ($priority as &$listener) {
+-            $countCalled++;
+-            $listener['clazz'] = $this->getMethodData($listener['class'], $listener['method']);
++      if (!empty($calledListeners)) {
++        foreach ($calledListeners as &$events) {
++          foreach ($events as &$priority) {
++            foreach ($priority as &$listener) {
++              $countCalled++;
++              $listener['clazz'] = $this->getMethodData($listener['class'], $listener['method']);
++            }
+           }
+         }
+       }
