@@ -171,6 +171,7 @@
         "drupal/views_conditional": "*",
         "drupal/views_data_export": "^1.0",
         "drupal/views_expandable_table": "^1.0@RC",
+        "drupal/views_infinite_scroll": "^2.0",
         "drupal/viewsreference": "*",
         "drupal/webform": "^6.2",
         "drupal/webform_entity_view": "^1.0",
