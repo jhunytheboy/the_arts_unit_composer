@@ -1,0 +1,21 @@
+diff --git a/js/fullcalendar_view.js b/js/fullcalendar_view.js
+index d1d5321..f52ed85 100644
+--- a/js/fullcalendar_view.js
++++ b/js/fullcalendar_view.js
+@@ -405,7 +405,7 @@
+ 
+   // After an Ajax call, the calendar objects need to rebuild,
+   // to reflect the changes, such as Ajax filter.
+-  $( document ).ajaxComplete(function( event, request, settings ) {
++  /*$( document ).ajaxComplete(function( event, request, settings ) {
+     // Remove the existing calendars except updating Ajax events.
+     if (
+         drupalSettings.calendar &&
+@@ -419,6 +419,6 @@
+       //Re-build calendars.
+       buildCalendars();
+     }
+-  });
++  });*/
+ 
+ })(jQuery, Drupal);
