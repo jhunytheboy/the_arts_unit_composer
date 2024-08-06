@@ -60,6 +60,7 @@
         "drupal/backup_migrate": "*",
         "drupal/better_exposed_filters": "^6.0",
         "drupal/block_field": "^1.0@RC",
+        "drupal/book_link_weight": "^1.2",
         "drupal/bootstrap4": "^2.1",
         "drupal/bu": "^2.0",
         "drupal/cache_control_override": "^1.1",
