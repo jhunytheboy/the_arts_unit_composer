@@ -61,6 +61,7 @@
         "drupal/entity_print": "^2.6",
         "drupal/entity_reference_display": "^2.0",
         "drupal/entity_reference_unpublished": "^2.0",
+        "drupal/entity_resave": "^1.0",
         "drupal/environment_indicator": "^4.0",
         "drupal/examples": "^4.0",
         "drupal/exif_orientation": "^1.4",
