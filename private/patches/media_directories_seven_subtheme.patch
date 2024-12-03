@@ -1,0 +1,11 @@
+diff --git a/modules/media_directories_ui/src/Plugin/EntityBrowser/Widget/DirectoryBrowser.php b/modules/media_directories_ui/src/Plugin/EntityBrowser/Widget/DirectoryBrowser.php
+--- a/modules/media_directories_ui/src/Plugin/EntityBrowser/Widget/DirectoryBrowser.php
++++ b/modules/media_directories_ui/src/Plugin/EntityBrowser/Widget/DirectoryBrowser.php
+@@ -166,6 +166,9 @@ public function getForm(array &$original_form, FormStateInterface $form_state, a
+       case 'claro':
+         $form['#attached']['library'][] = 'claro/media_library.theme';
+         break;
++      case 'the_arts_unit_admin':
++        $form['#attached']['library'][] = 'seven/media_library';
++        break;
+       case 'gin':

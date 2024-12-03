@@ -275,6 +275,9 @@
             },
             "drupal/name": {
                 "The database connection is not serializable ( https://www.drupal.org/project/name/issues/3468684 )" : "https://git.drupalcode.org/project/name/-/merge_requests/19.diff"
+            },
+            "drupal/media_directories": {
+                "Allow seven subtheme to load claro library (based on https://www.drupal.org/project/media_directories/issues/3395412 )" : "private/patches/media_directories_seven_subtheme.patch"
             }
         },
         "merge-plugin": {
