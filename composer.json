@@ -26,7 +26,7 @@
         "drupal/ai": "^1.0@beta",
         "drupal/ai_image_alt_text": "1.0.x-dev@dev",
         "drupal/ai_provider_openai": "^1.0@beta",
-        "drupal/anchor_link": "^2.5",
+        "drupal/anchor_link": "^2.7",
         "drupal/auto_entitylabel": "^3.0@beta",
         "drupal/autoban": "^1.10",
         "drupal/backup_migrate": "*",
@@ -89,6 +89,7 @@
         "drupal/google_tag": "^2.0",
         "drupal/honeypot": "^2.1",
         "drupal/hook_event_dispatcher": "^4.2",
+        "drupal/ief_complex_open": "^1.0",
         "drupal/image_url_formatter": "^1.0",
         "drupal/image_widget_crop": "^2.3",
         "drupal/inline_entity_form": "^1.0@RC",
@@ -287,7 +288,8 @@
         "merge-plugin": {
             "include": [
                 "web/modules/contrib/webform/composer.libraries.json",
-                "web/modules/contrib/media_directories/composer.libraries.json"
+                "web/modules/contrib/media_directories/composer.libraries.json",
+                "web/modules/contrib/anchor_link/composer.libraries.json"
             ]
         }
     }
