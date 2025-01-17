@@ -268,9 +268,6 @@
             "drupal/fullcalendar_view" : {
                 "Disable ajaxcomplete (based on https://www.drupal.org/project/fullcalendar_view/issues/3323399 )": "private/patches/fullcalendar_view-disable-ajaxcomplete.patch"
             },
-            "drupal/view_mode_page" : {
-                "Context exception when trying to create url (Drupal 10 is broken!) ( https://www.drupal.org/project/view_mode_page/issues/3300706 )" : "https://www.drupal.org/files/issues/2023-05-01/3300706-17-context_exception_when_trying_to_create_url_0.patch"
-            },
             "drupal/page_manager" : {
                 "Some mandatory parameters are missing ( https://www.drupal.org/project/page_manager/issues/3438993 )" : "https://www.drupal.org/files/issues/2024-08-14/page-manager-3438993-MR34-24.patch"
             },
