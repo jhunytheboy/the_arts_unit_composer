@@ -161,6 +161,7 @@
         "drupal/views_conditional": "^1.10",
         "drupal/views_data_export": "^1.0",
         "drupal/views_expandable_table": "^1.0@RC",
+        "drupal/views_filters_summary": "^3.0@beta",
         "drupal/views_infinite_scroll": "^2.0",
         "drupal/viewsreference": "^2.0@beta",
         "drupal/webform": "^6.2",
@@ -285,6 +286,9 @@
             },
             "drupal/media_directories": {
                 "Allow seven subtheme to load claro library (based on https://www.drupal.org/project/media_directories/issues/3395412 )" : "private/patches/media_directories_seven_subtheme.patch"
+            },
+            "drupal/views_filters_summary": {
+                "Display VERF labels (based on https://www.drupal.org/project/views_filters_summary/issues/3380427 )": "private/patches/verf.patch"
             }
         },
         "merge-plugin": {
