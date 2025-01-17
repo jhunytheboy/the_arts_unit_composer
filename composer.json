@@ -287,8 +287,11 @@
             "drupal/media_directories": {
                 "Allow seven subtheme to load claro library (based on https://www.drupal.org/project/media_directories/issues/3395412 )" : "private/patches/media_directories_seven_subtheme.patch"
             },
+            "drupal/verf": {
+                "Performance problem ( https://www.drupal.org/project/verf/issues/2998697 )": "https://www.drupal.org/files/issues/2023-05-12/verf-load_options-2998697-26.patch"
+            },
             "drupal/views_filters_summary": {
-                "Display VERF labels (based on https://www.drupal.org/project/views_filters_summary/issues/3380427 )": "private/patches/verf.patch"
+                "Display VERF labels (based on https://www.drupal.org/project/views_filters_summary/issues/3380427 )": "private/patches/views_filters_summary_verf.patch"
             }
         },
         "merge-plugin": {
