@@ -63,6 +63,7 @@
         "drupal/diff": "^1.7",
         "drupal/ds": "^3.9",
         "drupal/dynamic_entity_reference": "^4.0@alpha",
+        "drupal/entity_access_password": "^1.1",
         "drupal/entity_browser": "^2.6",
         "drupal/entity_embed": "^1.1",
         "drupal/entity_export_csv": "^2.0@beta",
