@@ -173,6 +173,7 @@
         "drupal/yaml_editor": "^1.1",
         "drush/drush": "^12",
         "geocoder-php/google-maps-provider": "^4.7",
+        "james-heinrich/getid3": "^1.9",
         "kint-php/kint": "^5.1",
         "vakata/jstree": "^3.3",
         "vimeo/vimeo-api": "^3.0",
