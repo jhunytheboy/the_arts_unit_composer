@@ -107,11 +107,11 @@
         "drupal/mail_login": "^2.4",
         "drupal/mailchimp": "^2.0",
         "drupal/mailsystem": "^4.4",
-        "drupal/media_directories": "^2.1@beta",
+        "drupal/media_directories": "^2.2@alpha",
         "drupal/media_entity_file_replace": "^1.0",
         "drupal/menu_item_role_access": "^2.0",
         "drupal/menu_link_attributes": "^1.2",
-        "drupal/metatag": "^1.16",
+        "drupal/metatag": "^2.1",
         "drupal/name": "^1.0@RC",
         "drupal/nbsp": "^2.3",
         "drupal/node_revision_delete": "^2.0@RC",
@@ -291,6 +291,9 @@
             },
             "drupal/views_filters_summary": {
                 "Display VERF labels (based on https://www.drupal.org/project/views_filters_summary/issues/3380427 )": "private/patches/views_filters_summary_verf.patch"
+            },
+            "drupal/admin_toolbar": {
+                "Controller for URI /en/admin/flush is not callable ( https://www.drupal.org/project/admin_toolbar/issues/3507579 )": "https://git.drupalcode.org/project/admin_toolbar/-/merge_requests/113.diff"
             }
         },
         "merge-plugin": {
