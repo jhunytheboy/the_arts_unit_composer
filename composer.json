@@ -258,9 +258,6 @@
         },
         "installer-types" : ["bower-asset", "npm-asset"],
         "patches" : {
-            "drupal/ckeditor_accordion": {
-                "HTML in tab head (https://www.drupal.org/project/ckeditor_accordion/issues/3355048)": "https://git.drupalcode.org/project/ckeditor_accordion/-/merge_requests/7.diff"
-            },
             "drupal/backup_migrate" : {
                 "Add Drush command for running a quick backup (https://www.drupal.org/project/backup_migrate/issues/3223057)": "https://www.drupal.org/files/issues/2021-12-02/3223057-17.patch"
             },
