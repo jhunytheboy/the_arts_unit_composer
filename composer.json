@@ -12,6 +12,40 @@
         {
             "type": "composer",
             "url": "https://packages.drupal.org/8"
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "josdejong/jsoneditor",
+                "version": "v5.29.1",
+                "type": "drupal-library",
+                "dist": {
+                "url": "https://github.com/josdejong/jsoneditor/archive/v5.29.1.zip",
+                "type": "zip"
+                },
+                "source": {
+                "url": "https://github.com/josdejong/jsoneditor",
+                "type": "git",
+                "reference": "v5.29.1"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "yesmeck/jquery-jsonview",
+                "version": "v1.2.3",
+                "type": "drupal-library",
+                "dist": {
+                "url": "https://github.com/yesmeck/jquery-jsonview/archive/v1.2.3.zip",
+                "type": "zip"
+                },
+                "source": {
+                "url": "https://github.com/yesmeck/jquery-jsonview",
+                "type": "git",
+                "reference": "v1.2.3"
+                }
+            }
         }
     ],
     "require": {
@@ -95,6 +129,7 @@
         "drupal/image_widget_crop": "^2.3",
         "drupal/inline_entity_form": "^1.0@RC",
         "drupal/jquery_ui_accordion": "^2.0",
+        "drupal/json_field": "^1.4",
         "drupal/layout_builder_ids": "^2.0@RC",
         "drupal/layout_builder_modal": "^1.2",
         "drupal/layout_builder_styles": "^2.0",
@@ -109,6 +144,7 @@
         "drupal/mailsystem": "^4.4",
         "drupal/media_directories": "^2.2@alpha",
         "drupal/media_entity_file_replace": "^1.0",
+        "drupal/media_export_files": "^1.0",
         "drupal/menu_item_role_access": "^2.0",
         "drupal/menu_link_attributes": "^1.2",
         "drupal/metatag": "^2.1",
@@ -174,10 +210,12 @@
         "drush/drush": "^12",
         "geocoder-php/google-maps-provider": "^4.7",
         "james-heinrich/getid3": "^1.9",
+        "josdejong/jsoneditor": "^5.29",
         "kint-php/kint": "^5.1",
         "vakata/jstree": "^3.3",
         "vimeo/vimeo-api": "^3.0",
-        "wikimedia/composer-merge-plugin": "^2.1"
+        "wikimedia/composer-merge-plugin": "^2.1",
+        "yesmeck/jquery-jsonview": "^1.2"
     },
     "conflict": {
         "drupal/drupal": "*"
