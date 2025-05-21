@@ -326,6 +326,9 @@
             },
             "drupal/views_filters_summary": {
                 "Display VERF labels (based on https://www.drupal.org/project/views_filters_summary/issues/3380427 )": "private/patches/views_filters_summary_verf.patch"
+            },
+            "drupal/unpublished_404": {
+                "if node is a string look up the node id for published status": "private/patches/unpublished_404-merge-request-1.diff"
             }
         },
         "merge-plugin": {
@@ -334,6 +337,7 @@
                 "web/modules/contrib/media_directories/composer.libraries.json",
                 "web/modules/contrib/anchor_link/composer.libraries.json"
             ]
+            
         }
     }
 }
