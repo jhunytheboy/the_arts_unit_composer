@@ -114,7 +114,7 @@
         "drupal/file_delete": "^2.0",
         "drupal/file_download_link": "^2",
         "drupal/formtips": "^1.5",
-        "drupal/fullcalendar_view": "5.1.14",
+        "drupal/fullcalendar_view": "^5.2",
         "drupal/geocoder": "^4.26",
         "drupal/geofield": "^1.62",
         "drupal/gin": "^3.0@RC",
@@ -193,6 +193,7 @@
         "drupal/verf": "^2.0",
         "drupal/view_mode_page": "^4.0",
         "drupal/view_unpublished": "^1.0",
+        "drupal/views_autocomplete_filters": "^2.0",
         "drupal/views_bulk_edit": "^3.0",
         "drupal/views_bulk_operations": "^4.1",
         "drupal/views_conditional": "^1.10",
@@ -304,7 +305,7 @@
                 "Remove redirect checker" : "private/patches/linkchecker-remove-redirect-message.patch"
             },
             "drupal/fullcalendar_view" : {
-                "Disable ajaxcomplete (based on https://www.drupal.org/project/fullcalendar_view/issues/3323399 )": "private/patches/fullcalendar_view-disable-ajaxcomplete.patch"
+                "Disable ajaxcomplete (based on https://www.drupal.org/project/fullcalendar_view/issues/3323399 )": "https://www.drupal.org/files/issues/2024-11-18/fullcalendar_retain_data_view-3323399-11.patch"
             },
             "drupal/page_manager" : {
                 "Some mandatory parameters are missing ( https://www.drupal.org/project/page_manager/issues/3438993 )" : "https://www.drupal.org/files/issues/2024-08-14/page-manager-3438993-MR34-24.patch"
