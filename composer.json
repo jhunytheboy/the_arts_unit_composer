@@ -81,7 +81,7 @@
         "drupal/ckeditor_accordion": "^2.0",
         "drupal/ckeditor_bootstrap_buttons": "*",
         "drupal/ckeditor_bootstrap_table": "^1.2",
-        "drupal/ckeditor_bs_grid": "^2.0",
+        "drupal/ckeditor_bs_grid": "2.0.12",
         "drupal/ckeditor_div_manager": "^2.1",
         "drupal/ckeditor_iframe": "^2.1",
         "drupal/classy": "^1.0",
@@ -95,7 +95,7 @@
         "drupal/core-composer-scaffold": "^10",
         "drupal/core-project-message": "^10",
         "drupal/core-recommended": "^10",
-        "drupal/csv_importer": "^1.11",
+        "drupal/csv_importer": "^2.2",
         "drupal/csv_serialization": "^4.0",
         "drupal/ctools": "^4.1",
         "drupal/devel": "^5",
@@ -333,9 +333,6 @@
             "drupal/verf": {
                 "Performance problem ( https://www.drupal.org/project/verf/issues/2998697 )": "https://www.drupal.org/files/issues/2023-05-12/verf-load_options-2998697-26.patch"
             },
-            "drupal/views_filters_summary": {
-                "Display VERF labels (based on https://www.drupal.org/project/views_filters_summary/issues/3380427 )": "private/patches/views_filters_summary_verf.patch"
-            },
             "drupal/unpublished_404": {
                 "if node is a string look up the node id for published status": "private/patches/unpublished_404-merge-request-1.diff"
             },
@@ -350,7 +347,7 @@
                 "web/modules/contrib/media_directories/composer.libraries.json",
                 "web/modules/contrib/anchor_link/composer.libraries.json"
             ]
-            
+
         }
     }
 }
