@@ -248,40 +248,40 @@
     "extra": {
         "drupal-scaffold": {
             "locations": {
-                "web-root": "web/"
+                "web-root": "public_html/"
             },
             "file-mapping": {
                 "[web-root]/.htaccess": false
             }
         },
         "installer-paths": {
-            "web/core": [
+            "public_html/core": [
                 "type:drupal-core"
             ],
-            "web/libraries/{$name}": [
+            "public_html/libraries/{$name}": [
                 "type:drupal-library",
                 "type:bower-asset",
                 "type:npm-asset"
             ],
-            "web/modules/contrib/{$name}": [
+            "public_html/modules/contrib/{$name}": [
                 "type:drupal-module"
             ],
-            "web/profiles/contrib/{$name}": [
+            "public_html/profiles/contrib/{$name}": [
                 "type:drupal-profile"
             ],
-            "web/themes/contrib/{$name}": [
+            "public_html/themes/contrib/{$name}": [
                 "type:drupal-theme"
             ],
             "drush/Commands/contrib/{$name}": [
                 "type:drupal-drush"
             ],
-            "web/modules/custom/{$name}": [
+            "public_html/modules/custom/{$name}": [
                 "type:drupal-custom-module"
             ],
-            "web/profiles/custom/{$name}": [
+            "public_html/profiles/custom/{$name}": [
                 "type:drupal-custom-profile"
             ],
-            "web/themes/custom/{$name}": [
+            "public_html/themes/custom/{$name}": [
                 "type:drupal-custom-theme"
             ]
         },
@@ -343,9 +343,9 @@
         },
         "merge-plugin": {
             "include": [
-                "web/modules/contrib/webform/composer.libraries.json",
-                "web/modules/contrib/media_directories/composer.libraries.json",
-                "web/modules/contrib/anchor_link/composer.libraries.json"
+                "public_html/modules/contrib/webform/composer.libraries.json",
+                "public_html/modules/contrib/media_directories/composer.libraries.json",
+                "public_html/modules/contrib/anchor_link/composer.libraries.json"
             ]
 
         }
