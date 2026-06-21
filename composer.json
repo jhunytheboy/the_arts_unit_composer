@@ -116,7 +116,7 @@
         "drupal/exif_orientation": "^1.4",
         "drupal/field_group": "^4.0",
         "drupal/field_permissions": "^1.2",
-        "drupal/file_delete": "^2.0",
+        "drupal/file_delete": "^3.0",
         "drupal/file_download_link": "^2",
         "drupal/flood_control": "^3.0",
         "drupal/formtips": "^1.5",
@@ -156,6 +156,7 @@
         "drupal/name": "^1.0@RC",
         "drupal/nbsp": "^2.3",
         "drupal/node_revision_delete": "^2.0@RC",
+        "drupal/node_view_permissions": "^2.0",
         "drupal/orphaned_files": "^1.0",
         "drupal/page_manager": "^4.0@RC",
         "drupal/panels": "^4.8",
@@ -339,8 +340,10 @@
             },
             "drupal/better_exposed_filters": {
                 "Undefined array key #default_value in BetterExposedFilters.php ( https://www.drupal.org/project/better_exposed_filters/issues/3349448 )": "https://git.drupalcode.org/project/better_exposed_filters/-/merge_requests/200.diff"
+            },
+            "drupal/login_destination": {
+                "isRouted() on string fix #3529641": "https://www.drupal.org/files/issues/2025-06-30/call_to_isrouted_on_string-3529641-5.patch"
             }
-
         },
         "merge-plugin": {
             "include": [
