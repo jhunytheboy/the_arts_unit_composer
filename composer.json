@@ -164,7 +164,7 @@
         "drupal/paragraphs": "^1.12",
         "drupal/pathauto": "^1.8",
         "drupal/preview_link": "^2.2@alpha",
-        "drupal/protected_pages": "^1.4",
+        "drupal/protected_pages": "^3.0",
         "drupal/publication_date": "^2.0@beta",
         "drupal/quick_node_block": "^2.0",
         "drupal/quick_node_clone": "^1.14",
@@ -175,7 +175,7 @@
         "drupal/redirect_metrics": "^2.0",
         "drupal/scheduler": "^2.1",
         "drupal/search_api": "^1.38",
-        "drupal/search_api_exclude_entity": "^2.0",
+        "drupal/search_api_exclude_entity": "^3.0",
         "drupal/search_api_page": "^1.1",
         "drupal/select2": "^2.0",
         "drupal/selective_better_exposed_filters": "^3.0",
@@ -320,9 +320,6 @@
             },
             "drupal/page_manager" : {
                 "Some mandatory parameters are missing ( https://www.drupal.org/project/page_manager/issues/3438993 )" : "https://www.drupal.org/files/issues/2024-08-14/page-manager-3438993-MR34-24.patch"
-            },
-            "drupal/smart_date" : {
-                "Refactor suppression of extra input row (Add 'remove' button) ( https://www.drupal.org/project/smart_date/issues/3452463 )" : "https://git.drupalcode.org/project/smart_date/-/merge_requests/124.diff"
             },
             "drupal/core" : {
                 "Diffs with different line endings leads to Invalid $mode 3 specified ( https://www.drupal.org/project/drupal/issues/3389715 )" : "https://www.drupal.org/files/issues/2024-01-09/Diffs-with-different-line-endings-leads-to-Invalid-mode-3-specified.patch",
