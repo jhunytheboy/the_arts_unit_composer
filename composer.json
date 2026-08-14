@@ -312,6 +312,9 @@
             "drupal/backup_migrate" : {
                 "Add Drush command for running a quick backup (https://www.drupal.org/project/backup_migrate/issues/3223057)": "https://www.drupal.org/files/issues/2021-12-02/3223057-17.patch"
             },
+            "drupal/csv_importer" : {
+                "ImporterBase::attach() downloads any http(s) URL value as a file, corrupting non-file fields like link fields": "private/patches/csv_importer-attach-only-file-fields.patch"
+            },
             "drupal/linkchecker" : {
                 "Remove redirect checker" : "private/patches/linkchecker-remove-redirect-message.patch"
             },

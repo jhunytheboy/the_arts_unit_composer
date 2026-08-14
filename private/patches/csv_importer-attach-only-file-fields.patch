@@ -1,0 +1,18 @@
+--- a/src/Plugin/ImporterBase.php
++++ b/src/Plugin/ImporterBase.php
+@@ -261,8 +261,14 @@
+       $content[$entity_definition->getKey('bundle')] = $this->configuration['entity_type_bundle'];
+     }
+
++    $bundle = $entity_type_bundle ?: $entity_type;
++    $field_definitions = \Drupal::service('entity_field.manager')->getFieldDefinitions($entity_type, $bundle);
++
+     foreach ($content as $key => $item) {
+-      $content[$key] = $this->attach($item);
++      $field_type = isset($field_definitions[$key]) ? $field_definitions[$key]->getType() : NULL;
++      if (in_array($field_type, ['file', 'image'], TRUE)) {
++        $content[$key] = $this->attach($item);
++      }
+     }
+
+     /** @var \Drupal\Core\Entity\Sql\SqlContentEntityStorage $entity_storage  */
