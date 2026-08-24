@@ -1,0 +1,15 @@
+diff --git a/src/EntityReferenceRevisionsFieldItemList.php b/src/EntityReferenceRevisionsFieldItemList.php
+index e7be6b0848d4c71e8e78e88a3044f2f5c96cf155..fa954c0bff29772579243707b2789d6a5c6a302d 100644
+--- a/src/EntityReferenceRevisionsFieldItemList.php
++++ b/src/EntityReferenceRevisionsFieldItemList.php
+@@ -185,7 +185,9 @@ class EntityReferenceRevisionsFieldItemList extends EntityReferenceFieldItemList
+           assert($storage instanceof RevisionableStorageInterface);
+           $entity->setOriginal($storage->loadRevisionUnchanged($entity->getLoadedRevisionId()));
+         }
+-        return $entity->getTranslation($langcode)->hasTranslationChanges();
++        if ($entity->getTranslation($langcode)->hasTranslationChanges()) {
++          return TRUE;
++        }
+       }
+     }
+ 

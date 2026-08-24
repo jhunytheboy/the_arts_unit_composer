@@ -315,6 +315,9 @@
             "drupal/csv_importer" : {
                 "ImporterBase::attach() downloads any http(s) URL value as a file, corrupting non-file fields like link fields": "private/patches/csv_importer-attach-only-file-fields.patch"
             },
+            "drupal/entity_reference_revisions" : {
+                "EntityReferenceRevisionsFieldItemList::hasAffectingChanges() returns on the first delta, so edits to paragraphs beyond the first are never detected as changes (https://www.drupal.org/project/entity_reference_revisions/issues/3582279)": "private/patches/entity_reference_revisions-hasAffectingChanges-3582279.patch"
+            },
             "drupal/linkchecker" : {
                 "Remove redirect checker" : "private/patches/linkchecker-remove-redirect-message.patch"
             },
