@@ -1,0 +1,89 @@
+diff --git a/src/WebformSubmissionExporter.php b/src/WebformSubmissionExporter.php
+--- a/src/WebformSubmissionExporter.php
++++ b/src/WebformSubmissionExporter.php
+@@ -915,6 +915,13 @@
+       $this->getExporter()->writeSubmission($webform_submission);
+     }
+ 
++    // Commit any archive entries added above before this batch operation's
++    // exporter plugin instance is discarded, so the next operation (or the
++    // final writeExportToArchive() call) reliably sees them on reopen.
++    if ($is_archive) {
++      $this->getExporter()->closeArchive();
++    }
++
+     $this->getExporter()->closeExport();
+   }
+ 
+@@ -1137,9 +1144,18 @@
+ 
+     $export_options = $this->getExportOptions();
+ 
+-    // For file and attachment exports set the batch limit to 100.
+-    if (($export_options['files'] || $export_options['attachments']) && $batch_limit > 100) {
+-      $batch_limit = 100;
++    // For file and attachment exports set the batch limit much lower than
++    // for plain tabular exports. Each submission in this kind of export can
++    // carry many megabytes of real file data, and both supported archive
++    // formats rebuild/rewrite the growing archive on every file added
++    // (PEAR Archive_Tar always does; ZipArchive avoids the rewrite but still
++    // does real I/O per file), so a single batch operation covering too many
++    // file-heavy submissions can exceed PHP's max_execution_time/memory
++    // limits within one HTTP request. Keeping each batch operation small
++    // ensures forward progress resumes across requests instead of the whole
++    // export dying mid-archive.
++    if (($export_options['files'] || $export_options['attachments']) && $batch_limit > 5) {
++      $batch_limit = 5;
+     }
+ 
+     // Allow attachment elements to lower the batch limit.
+diff --git a/src/Plugin/WebformExporterBase.php b/src/Plugin/WebformExporterBase.php
+--- a/src/Plugin/WebformExporterBase.php
++++ b/src/Plugin/WebformExporterBase.php
+@@ -334,6 +334,25 @@
+     return $this->configFactory->get('webform.settings')->get('batch.default_batch_export_size') ?: 500;
+   }
+ 
++  /**
++   * {@inheritdoc}
++   */
++  public function closeArchive() {
++    if (isset($this->archive)) {
++      // A ZipArchive only commits its buffered entries to disk when closed;
++      // unlike Archive_Tar (which writes/rewrites the file on every single
++      // add), relying on the object simply going out of scope to flush it
++      // is not reliable across the separate exporter plugin instances used
++      // by each Batch API operation, and can silently drop an entire
++      // operation's worth of files. Archive_Tar has no such requirement:
++      // every add already opens, appends, and closes the file in full.
++      if ($this->archive instanceof \ZipArchive) {
++        $this->archive->close();
++      }
++      $this->archive = NULL;
++    }
++  }
++
+   /* ************************************************************************ */
+   // Archive helper methods.
+   /* ************************************************************************ */
+diff --git a/src/Plugin/WebformExporterInterface.php b/src/Plugin/WebformExporterInterface.php
+--- a/src/Plugin/WebformExporterInterface.php
++++ b/src/Plugin/WebformExporterInterface.php
+@@ -214,6 +214,17 @@
+   public function addToArchive($path, $name, array $options = []);
+ 
+   /**
++   * Flush and close any open exporter archive handle.
++   *
++   * Must be called at the end of every batch operation that may have added
++   * files to the archive, so that a ZIP archive's buffered entries are
++   * committed to disk before the next operation (which may run as a
++   * different exporter plugin instance) reopens the same file to append
++   * more entries. Safe to call even when no archive is open.
++   */
++  public function closeArchive();
++
++  /**
+    * Get the number of submissions to be exported with each batch.
+    *
+    * @return int
