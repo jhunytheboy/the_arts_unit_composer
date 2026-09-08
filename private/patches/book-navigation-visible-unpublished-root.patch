@@ -1,0 +1,94 @@
+--- a/book.module
++++ b/book.module
+@@ -230,7 +230,7 @@
+   if ($view_mode == 'full') {
+     if (!empty($node->book['bid']) && empty($node->in_preview)) {
+       $book_node = Node::load($node->book['bid']);
+-      if (!$book_node->access()) {
++      if (!$book_node) {
+         return;
+       }
+       $build['book_navigation'] = [
+--- a/src/BookManager.php
++++ b/src/BookManager.php
+@@ -1027,16 +1027,24 @@
+     foreach ($tree as $key => $v) {
+       $item = &$tree[$key]['link'];
+       $this->bookLinkTranslate($item);
++      if ($tree[$key]['below']) {
++        $this->doBookTreeCheckAccess($tree[$key]['below']);
++      }
+       if ($item['access']) {
+-        if ($tree[$key]['below']) {
+-          $this->doBookTreeCheckAccess($tree[$key]['below']);
+-        }
+         // The weights are made a uniform 5 digits by adding 50000 as an offset.
+         // After calling $this->bookLinkTranslate(), $item['title'] has the
+         // translated title. Adding the nid to the end of the index insures that
+         // it is unique.
+         $new_tree[(50000 + $item['weight']) . ' ' . $item['title'] . ' ' . $item['nid']] = $tree[$key];
+       }
++      elseif ((int) $item['depth'] === 1 && $tree[$key]['below']) {
++        // The book's top page is inaccessible (e.g. unpublished), but that
++        // shouldn't hide navigation to its otherwise-accessible children.
++        // Promote them to this level instead of dropping the whole subtree.
++        foreach ($tree[$key]['below'] as $child_key => $child) {
++          $new_tree[$child_key] = $child;
++        }
++      }
+     }
+     // Sort siblings in the tree based on the weights and localized titles.
+     ksort($new_tree);
+--- a/src/BookOutline.php
++++ b/src/BookOutline.php
+@@ -50,6 +50,11 @@
+     } while ($key && $key != $book_link['nid']);
+ 
+     if ($key == $book_link['nid']) {
++      // There is no previous link if this is the first visible item (e.g.
++      // its preceding siblings, or the book's top page, are inaccessible).
++      if (!$prev) {
++        return NULL;
++      }
+       // The previous page in the book may be a child of the previous visible link.
+       if ($prev['depth'] == $book_link['depth']) {
+         // The subtree will have only one link at the top level - get its data.
+--- a/src/Plugin/Block/BookNavigationBlock.php
++++ b/src/Plugin/Block/BookNavigationBlock.php
+@@ -159,20 +159,28 @@
+       }
+     }
+     elseif ($current_bid) {
+-      // Only display this block when the user is browsing a book and do
+-      // not show unpublished books.
++      // Only display this block when the user is browsing a book. The book's
++      // top page being unpublished doesn't hide its otherwise-accessible
++      // children below; per-item access is still enforced by the book tree.
+       $nid = \Drupal::entityQuery('node')
+-        ->accessCheck(TRUE)
++        ->accessCheck(FALSE)
+         ->condition('nid', $node->book['bid'], '=')
+-        ->condition('status', NodeInterface::PUBLISHED)
+         ->execute();
+ 
+-      // Only show the block if the user has view access for the top-level node.
+       if ($nid) {
+         $tree = $this->bookManager->bookTreeAllData($node->book['bid'], $node->book);
+-        // There should only be one element at the top level.
+-        $data = array_shift($tree);
+-        $below = $this->bookManager->bookTreeOutput($data['below']);
++        // Normally there is only one element at the top level (the book's
++        // top page), and we want its children. But if the top page itself
++        // is inaccessible, its children are already promoted to the top
++        // level of $tree, so there is no single wrapping element to unwrap.
++        $first = reset($tree);
++        if ($first && (int) $first['link']['depth'] === 1) {
++          $data = array_shift($tree);
++          $below = $this->bookManager->bookTreeOutput($data['below']);
++        }
++        else {
++          $below = $this->bookManager->bookTreeOutput($tree);
++        }
+         if (!empty($below)) {
+           return $below;
+         }

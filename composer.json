@@ -334,6 +334,9 @@
                 "Diffs with different line endings leads to Invalid $mode 3 specified ( https://www.drupal.org/project/drupal/issues/3389715 )" : "https://www.drupal.org/files/issues/2024-01-09/Diffs-with-different-line-endings-leads-to-Invalid-mode-3-specified.patch",
                 "Notice: Undefined index: value in Drupal\\views\\Plugin\\views\\filter\\NumericFilter->acceptExposedInput() ( https://www.drupal.org/project/drupal/issues/2825860 )" : "https://www.drupal.org/files/issues/2024-06-13/2825860-175.patch"
             },
+            "drupal/book": {
+                "Keep book navigation visible on child pages when the book's top page is unpublished ( related: https://www.drupal.org/project/drupal/issues/3020298 )" : "private/patches/book-navigation-visible-unpublished-root.patch"
+            },
             "drupal/media_directories": {
                 "Allow seven subtheme to load claro library (based on https://www.drupal.org/project/media_directories/issues/3395412 )" : "private/patches/media_directories_seven_subtheme.patch"
             },
