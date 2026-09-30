@@ -60,11 +60,21 @@ if (!$apply) {
 }
 
 $tx = $db->startTransaction();
-$data = $db->update('node__field_enquiries')
-  ->fields(['field_enquiries_target_id' => $to])
-  ->condition('field_enquiries_target_id', $from)
-  ->execute();
-$rev = $db->query("UPDATE {node_revision__field_enquiries} r INNER JOIN {node} n ON n.vid = r.revision_id SET r.field_enquiries_target_id = :t WHERE r.field_enquiries_target_id = :f", [':t' => $to, ':f' => $from])->rowCount();
+try {
+  $data = $db->update('node__field_enquiries')
+    ->fields(['field_enquiries_target_id' => $to])
+    ->condition('field_enquiries_target_id', $from)
+    ->execute();
+  // Raw UPDATE ... JOIN needs $allow_row_count to report affected rows.
+  $stmt = $db->prepareStatement("UPDATE {node_revision__field_enquiries} r INNER JOIN {node} n ON n.vid = r.revision_id SET r.field_enquiries_target_id = :t WHERE r.field_enquiries_target_id = :f", [], TRUE);
+  $stmt->execute([':t' => $to, ':f' => $from]);
+  $rev = $stmt->rowCount();
+}
+catch (\Throwable $e) {
+  // Drupal transactions commit on destruct, so roll back explicitly.
+  $tx->rollBack();
+  throw $e;
+}
 unset($tx);
 echo "Updated $data data rows, $rev current-revision rows.\n";
 
