@@ -323,6 +323,9 @@
             "drupal/webform" : {
                 "Archive exports (attachments/uploaded files) are unreliable for file-heavy webforms: lowers the batch size so a single request doesn't have to build the whole archive at once, and explicitly closes/flushes each batch's ZIP archive so later batches don't silently lose the files added by earlier ones": "private/patches/webform-archive-export-reliability.patch"
             },
+            "drupal/webform_analysis" : {
+                "webform_node_analysis adds the node 'Analysis' operation to every node of a bundle that has a webform reference field, even when that node's field is empty, so only check whether the node actually references a webform": "private/patches/webform-node-analysis-only-referenced.patch"
+            },
             "drupal/linkchecker" : {
                 "Remove redirect checker" : "private/patches/linkchecker-remove-redirect-message.patch"
             },

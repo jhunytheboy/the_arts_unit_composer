@@ -1,0 +1,15 @@
+--- a/modules/webform_node_analysis/src/EntityTypeInfo.php
++++ b/modules/webform_node_analysis/src/EntityTypeInfo.php
+@@ -109,6 +109,12 @@
+       if (isset($webform_field_names[$bundle]) && $entity->hasLinkTemplate('webform.results_analysis')) {
+         $weight = 100;
+         foreach ($webform_field_names[$bundle] as $field_name => $field_label) {
++          // Only expose the operation when this specific node actually has a
++          // webform referenced in the field, not merely when the bundle has
++          // the field configured.
++          if (!$entity->hasField($field_name) || $entity->get($field_name)->isEmpty()) {
++            continue;
++          }
+           $operations['analysis'] = [
+             'title'  => $this->t('Analysis @field', ['@field' => $field_label]),
+             'weight' => $weight++,
