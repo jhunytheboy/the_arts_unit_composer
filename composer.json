@@ -346,7 +346,7 @@
                 "if node is a string look up the node id for published status": "private/patches/unpublished_404-merge-request-1.diff"
             },
             "drupal/better_exposed_filters": {
-                "Undefined array key #default_value in BetterExposedFilters.php ( https://www.drupal.org/project/better_exposed_filters/issues/3349448 )": "https://git.drupalcode.org/project/better_exposed_filters/-/merge_requests/200.diff"
+                "Undefined array key #default_value in BetterExposedFilters.php ( https://www.drupal.org/project/better_exposed_filters/issues/3349448 ): rerolled locally against 7.2.0 since upstream MR !200 targets the older 7.0.x branch and no longer applies": "private/patches/better_exposed_filters-undefined-default_value-3349448.patch"
             },
             "drupal/login_destination": {
                 "isRouted() on string fix #3529641": "https://www.drupal.org/files/issues/2025-06-30/call_to_isrouted_on_string-3529641-5.patch"

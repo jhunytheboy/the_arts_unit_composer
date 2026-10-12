@@ -1,0 +1,13 @@
+--- a/src/Plugin/views/exposed_form/BetterExposedFilters.php
++++ b/src/Plugin/views/exposed_form/BetterExposedFilters.php
+@@ -1052,7 +1052,9 @@
+                 foreach (['sort_bef_combine', 'sort_by', 'sort_order'] as $sort_el) {
+                   if (isset($this->view->exposed_data[$sort_el]) && isset($form[$sort_el])) {
+                     $this->request->query->remove($sort_el);
+-                    $form_state->setValue($sort_el, $form[$sort_el]['#default_value']);
++                    if (isset($form[$sort_el]['#default_value'])) {
++                      $form_state->setValue($sort_el, $form[$sort_el]['#default_value']);
++                    }
+                   }
+                 }
+               }
