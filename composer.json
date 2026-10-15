@@ -99,7 +99,7 @@
         "drupal/csv_serialization": "^4.0",
         "drupal/ctools": "^4.1",
         "drupal/devel": "^5",
-        "drupal/diff": "^1.7",
+        "drupal/diff": "^2.1",
         "drupal/ds": "^3.9",
         "drupal/dynamic_entity_reference": "^4.0@alpha",
         "drupal/entity_access_password": "^1.1",
@@ -123,9 +123,6 @@
         "drupal/fullcalendar_view": "^5.2",
         "drupal/geocoder": "^4.26",
         "drupal/geofield": "^1.62",
-        "drupal/gin": "^3.0@RC",
-        "drupal/gin_login": "^2.1",
-        "drupal/gin_toolbar": "^1.0@RC",
         "drupal/google_analytics": "^4.0",
         "drupal/google_tag": "^2.0",
         "drupal/honeypot": "^2.1",
@@ -311,6 +308,9 @@
         },
         "installer-types" : ["bower-asset", "npm-asset"],
         "patches" : {
+            "drupal/address" : {
+                "AddressFieldBuilder::build() lacks the array return type that diff 2.x's CoreFieldBuilder::build() declares, causing a fatal error when comparing revisions with an address field (fixed upstream in address 2.0.x)": "private/patches/address-diff-build-return-type.patch"
+            },
             "drupal/csv_importer" : {
                 "ImporterBase::attach() downloads any http(s) URL value as a file, corrupting non-file fields like link fields": "private/patches/csv_importer-attach-only-file-fields.patch"
             },
