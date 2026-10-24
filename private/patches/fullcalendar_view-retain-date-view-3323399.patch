@@ -1,0 +1,61 @@
+diff --git a/js/fullcalendar_view.js b/js/fullcalendar_view.js
+index 329fb37..064813a 100644
+--- a/js/fullcalendar_view.js
++++ b/js/fullcalendar_view.js
+@@ -13,6 +13,9 @@
+   // Date entry clicked.
+   var slotDate;
+ 
++  // Storage for currentDate and currentView.
++  var currentDateAndView = [];
++
+   /**
+    * @see https://fullcalendar.io/docs/v4/eventSourceSuccess
+    */
+@@ -323,6 +326,17 @@
+         calendarOptions.defaultDate = initialDate;
+       }
+ 
++      // Reloading saved currentDate and currentView.
++      if (currentDateAndView[viewIndex]) {
++        if (!initialDate &&
++          currentDateAndView[viewIndex].calendarCurrentDate) {
++          calendarOptions.defaultDate = currentDateAndView[viewIndex].calendarCurrentDate;
++        }
++        if (currentDateAndView[viewIndex].calendarCurrentView) {
++          calendarOptions.defaultView = currentDateAndView[viewIndex].calendarCurrentView;
++        }
++      }
++
+       // Initial the calendar.
+       if (calendarEl) {
+         if (drupalSettings.calendar) {
+@@ -439,4 +453,28 @@
+     }
+   });
+ 
++  // Store current month on the currentDateAndView variable.
++  $( document ).ajaxSend(function (event, xhr, settings) {
++    storeCurrentMonthAndView();
++  });
++
++  // Store current info.
++  function storeCurrentMonthAndView() {
++    $('.js-drupal-fullcalendar')
++    .each(function () {
++      let calendarEl = this;
++      let viewIndex = parseInt(calendarEl.getAttribute("data-calendar-view-index"));
++      if (!drupalSettings.calendar || !drupalSettings.calendar[viewIndex]) {
++        return;
++      }
++      let calendar = drupalSettings.calendar[viewIndex];
++      let currentDate = calendar.getDate(); // This returns a Date object
++
++      currentDateAndView[viewIndex] = {
++        calendarCurrentDate: currentDate.toISOString(),
++        calendarCurrentView: calendar.view.type,
++      };
++    });
++  }
++
+ })(jQuery, Drupal, drupalSettings);

@@ -134,7 +134,6 @@
         "drupal/jquery_ui_accordion": "^2.0",
         "drupal/json_field": "^1.4",
         "drupal/layout_builder_ids": "^2.0@RC",
-        "drupal/layout_builder_modal": "^1.2",
         "drupal/layout_builder_styles": "^2.0",
         "drupal/lazy_views": "^1.0",
         "drupal/linkchecker": "^2.0",
@@ -327,7 +326,7 @@
                 "Remove redirect checker" : "private/patches/linkchecker-remove-redirect-message.patch"
             },
             "drupal/fullcalendar_view" : {
-                "Disable ajaxcomplete (based on https://www.drupal.org/project/fullcalendar_view/issues/3323399 )": "https://www.drupal.org/files/issues/2024-11-18/fullcalendar_retain_data_view-3323399-11.patch"
+                "Keep the calendar on the current month and view after an AJAX exposed filter instead of jumping back to today ( https://www.drupal.org/project/fullcalendar_view/issues/3323399 ): rerolled locally against 5.3.0 since upstream patch #11 no longer applies": "private/patches/fullcalendar_view-retain-date-view-3323399.patch"
             },
             "drupal/core" : {
                 "Diffs with different line endings leads to Invalid $mode 3 specified ( https://www.drupal.org/project/drupal/issues/3389715 )" : "https://www.drupal.org/files/issues/2024-01-09/Diffs-with-different-line-endings-leads-to-Invalid-mode-3-specified.patch",
