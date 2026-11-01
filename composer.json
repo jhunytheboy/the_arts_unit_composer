@@ -122,7 +122,7 @@
         "drupal/formtips": "^1.5",
         "drupal/fullcalendar_view": "^5.2",
         "drupal/geocoder": "^4.26",
-        "drupal/geofield": "^1.62",
+        "drupal/geofield": "^10.3",
         "drupal/google_analytics": "^4.0",
         "drupal/google_tag": "^2.0",
         "drupal/honeypot": "^2.1",
