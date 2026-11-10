@@ -1,0 +1,34 @@
+--- a/modules/taxonomy/src/Plugin/views/filter/TaxonomyIndexTid.php
++++ b/modules/taxonomy/src/Plugin/views/filter/TaxonomyIndexTid.php
+@@ -222,9 +222,28 @@
+         if ($this->options['limit']) {
+           $query->condition('vid', $vocabulary->id());
+         }
+-        $terms = Term::loadMultiple($query->execute());
+-        foreach ($terms as $term) {
+-          $options[$term->id()] = \Drupal::service('entity.repository')->getTranslationFromContext($term)->label();
++        $tids = $query->execute();
++        if ($tids && !\Drupal::languageManager()->isMultilingual()) {
++          // On a monolingual site a term's label is just its name, so read the
++          // names directly instead of fully loading every term: on a large
++          // vocabulary that costs tens of MB, held for the rest of the request.
++          $names = \Drupal::database()->select($this->termStorage->getEntityType()->getDataTable(), 't')
++            ->fields('t', ['tid', 'name'])
++            ->condition('t.tid', $tids, 'IN')
++            ->condition('t.default_langcode', 1)
++            ->execute()
++            ->fetchAllKeyed();
++          foreach ($tids as $tid) {
++            if (isset($names[$tid])) {
++              $options[$tid] = $names[$tid];
++            }
++          }
++        }
++        else {
++          $terms = Term::loadMultiple($tids);
++          foreach ($terms as $term) {
++            $options[$term->id()] = \Drupal::service('entity.repository')->getTranslationFromContext($term)->label();
++          }
+         }
+       }
+ 

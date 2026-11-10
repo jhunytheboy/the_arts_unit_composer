@@ -327,7 +327,8 @@
             },
             "drupal/core" : {
                 "Diffs with different line endings leads to Invalid $mode 3 specified ( https://www.drupal.org/project/drupal/issues/3389715 )" : "https://www.drupal.org/files/issues/2024-01-09/Diffs-with-different-line-endings-leads-to-Invalid-mode-3-specified.patch",
-                "Notice: Undefined index: value in Drupal\\views\\Plugin\\views\\filter\\NumericFilter->acceptExposedInput() ( https://www.drupal.org/project/drupal/issues/2825860 )" : "https://www.drupal.org/files/issues/2024-06-13/2825860-175.patch"
+                "Notice: Undefined index: value in Drupal\\views\\Plugin\\views\\filter\\NumericFilter->acceptExposedInput() ( https://www.drupal.org/project/drupal/issues/2825860 )" : "https://www.drupal.org/files/issues/2024-06-13/2825860-175.patch",
+                "TaxonomyIndexTid exposed select fully loads every term in the vocabulary just for its label (3,673 schools = 84MB, held for the whole request, part of the node 6672 out-of-memory); on a monolingual site read the names from the data table instead" : "private/patches/core-taxonomy-index-tid-term-names-without-loading.patch"
             },
             "drupal/book": {
                 "Keep book navigation (pager and tree block) visible on child pages when the book's top page is unpublished ( related: https://www.drupal.org/project/drupal/issues/3020298 )" : "private/patches/book-navigation-visible-unpublished-root.patch"
