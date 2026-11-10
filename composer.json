@@ -313,9 +313,6 @@
             "drupal/csv_importer" : {
                 "ImporterBase::attach() downloads any http(s) URL value as a file, corrupting non-file fields like link fields": "private/patches/csv_importer-attach-only-file-fields.patch"
             },
-            "drupal/entity_reference_revisions" : {
-                "EntityReferenceRevisionsFieldItemList::hasAffectingChanges() returns on the first delta, so edits to paragraphs beyond the first are never detected as changes (https://www.drupal.org/project/entity_reference_revisions/issues/3582279)": "private/patches/entity_reference_revisions-hasAffectingChanges-3582279.patch"
-            },
             "drupal/webform" : {
                 "Archive exports (attachments/uploaded files) are unreliable for file-heavy webforms: lowers the batch size so a single request doesn't have to build the whole archive at once, and explicitly closes/flushes each batch's ZIP archive so later batches don't silently lose the files added by earlier ones": "private/patches/webform-archive-export-reliability.patch"
             },
