@@ -1,0 +1,38 @@
+diff --git a/src/Plugin/WebformHandler/BlockWordsWebformHandler.php b/src/Plugin/WebformHandler/BlockWordsWebformHandler.php
+index 2f62334..bc8832f 100644
+--- a/src/Plugin/WebformHandler/BlockWordsWebformHandler.php
++++ b/src/Plugin/WebformHandler/BlockWordsWebformHandler.php
+@@ -42,12 +42,27 @@ class BlockWordsWebformHandler extends WebformHandlerBase {
+    */
+   public function validateForm(array &$form, FormStateInterface $form_state, WebformSubmissionInterface $webform_submission) {
+ 
+-    $fields = explode(',', trim($this->configuration['spam_field_name']));
+-    if (is_array($fields)) {
+-      foreach ($fields as $value) {
+-        $field = trim($value);
+-        $this->validateSpam($form_state, $field, $this->configuration['spam_words'], $this->configuration['spam_text_message']);
+-      }
++    // Use the site-wide settings (as 2.x did), falling back to the handler's
++    // own configuration where a setting is empty.
++    $settings = \Drupal::config('webform_spam_words.settings');
++    $spam_words = $settings->get('spam_words') ?: $this->configuration['spam_words'];
++    $spam_text_message = $settings->get('spam_text_message') ?: $this->configuration['spam_text_message'];
++    $spam_field_name = $settings->get('spam_field_name') ?: $this->configuration['spam_field_name'];
++
++    // The handler default is a string; the settings form stores an array.
++    if (!is_array($spam_words)) {
++      $spam_words = preg_split('/[\r\n,]+/', (string) $spam_words);
++    }
++    // Drop empty words: an empty needle would match every value.
++    $spam_words = array_filter(array_map('trim', $spam_words), 'strlen');
++    if (!$spam_words) {
++      return;
++    }
++
++    $fields = explode(',', trim($spam_field_name));
++    foreach ($fields as $value) {
++      $field = trim($value);
++      $this->validateSpam($form_state, $field, $spam_words, $spam_text_message);
+     }
+ 
+   }

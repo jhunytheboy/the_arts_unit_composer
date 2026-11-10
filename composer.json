@@ -319,6 +319,9 @@
             "drupal/webform_analysis" : {
                 "webform_node_analysis adds the node 'Analysis' operation to every node of a bundle that has a webform reference field, even when that node's field is empty, so only check whether the node actually references a webform": "private/patches/webform-node-analysis-only-referenced.patch"
             },
+            "drupal/webform_spam_words" : {
+                "3.0.0's Drupal 11 compatibility rewrite (#3438752) made BlockWordsWebformHandler ignore the global spam words list and foreach() over its own string default ('SEO'), so no words were ever checked and every validation logged a warning; read webform_spam_words.settings again (as 2.x did), falling back to the handler config, and accept a string list": "private/patches/webform_spam_words-handler-use-global-settings.patch"
+            },
             "drupal/linkchecker" : {
                 "Remove redirect checker" : "private/patches/linkchecker-remove-redirect-message.patch"
             },
