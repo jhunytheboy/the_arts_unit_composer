@@ -1,0 +1,35 @@
+--- a/src/Hook/PageManagerHooks.php	2026-11-12 14:26:29.150107650 +1100
++++ b/src/Hook/PageManagerHooks.php	2026-11-12 14:26:29.180781211 +1100
+@@ -4,7 +4,6 @@
+ 
+ use Drupal\Core\Entity\EntityTypeManagerInterface;
+ use Drupal\Core\Hook\Attribute\Hook;
+-use Drupal\Core\Routing\RouteProviderInterface;
+ use Drupal\page_manager\Entity\LayoutBuilderStorage;
+ use Drupal\page_manager\Form\LayoutBuilderForm;
+ use Drupal\page_manager\Plugin\Derivative\PageManagerLocalTask;
+@@ -14,8 +13,14 @@
+  */
+ class PageManagerHooks {
+ 
++  /**
++   * The route provider is fetched lazily in localTasksAlter(), not injected.
++   *
++   * Injecting router.route_provider here causes a circular service reference
++   * when hook_entity_type_build() runs while the logger chain is being built
++   * (e.g. via simple_sitemap's path processor -> logger.channel.*).
++   */
+   public function __construct(
+-    protected RouteProviderInterface $routeProvider,
+     protected EntityTypeManagerInterface $entityTypeManager,
+   ) {}
+ 
+@@ -48,7 +53,7 @@
+    */
+   #[Hook('local_tasks_alter')]
+   public function localTasksAlter(&$local_tasks) {
+-    $local_task = new PageManagerLocalTask($this->routeProvider, $this->entityTypeManager);
++    $local_task = new PageManagerLocalTask(\Drupal::service('router.route_provider'), $this->entityTypeManager);
+     $local_task->alterLocalTasks($local_tasks);
+   }
+ 
