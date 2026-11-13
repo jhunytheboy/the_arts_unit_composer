@@ -229,6 +229,7 @@
         "yesmeck/jquery-jsonview": "^1.2"
     },
     "conflict": {
+        "consolidation/robo": ">=5.2.1 <5.2.4",
         "drupal/drupal": "*"
     },
     "minimum-stability": "dev",
