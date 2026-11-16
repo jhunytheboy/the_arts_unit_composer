@@ -1,0 +1,59 @@
+--- a/src/Form/BookLinkWeightForm.php
++++ b/src/Form/BookLinkWeightForm.php
+@@ -36,14 +36,16 @@
+   public function alterBookOutlineForm(&$form, FormStateInterface $form_state) {
+     if (!empty($form['book']['bid']['#default_value']) && !empty($form['book']['pid']['#default_value'])) {
+       $entity = $form_state->getformObject()->getEntity();
+-      $link = $this->bookManager->loadBookLink($form['book']['pid']['#default_value']);
++      // Load the siblings directly rather than via
++      // BookManager::bookSubtreeData(). That method caches the
++      // access-filtered tree in one entry shared by every user, so if
++      // a visitor who cannot see unpublished pages built it first, the
++      // node being edited (and any unpublished siblings) would be missing
++      // here. The node would then be appended at the bottom of the
++      // table and saved with the last weight + 1.
+       $subTree = [
+-        'below' => [],
++        'below' => $this->loadSiblings((int) $form['book']['pid']['#default_value']),
+       ];
+-      if ($link) {
+-        $parentTree = $this->bookManager->bookSubtreeData($link);
+-        $subTree = reset($parentTree);
+-      }
+ 
+       $delta = self::DEFAULT_DELTA;
+       if (!empty($subTree['below'])) {
+@@ -171,6 +173,33 @@
+   }
+ 
+   /**
++   * Load the child links of a book page the current user can view.
++   *
++   * @param int $pid
++   *   The parent book page node ID.
++   *
++   * @return array
++   *   Items shaped like bookSubtreeData() children ('link' key), sorted by
++   *   weight then title.
++   */
++  protected function loadSiblings(int $pid) {
++    $items = [];
++    if (!$pid) {
++      return $items;
++    }
++    foreach (\Drupal::service('book.outline_storage')->loadBookChildren($pid) as $link) {
++      $this->bookManager->bookLinkTranslate($link);
++      if (!empty($link['access'])) {
++        $items[] = ['link' => $link];
++      }
++    }
++    usort($items, function ($a, $b) {
++      return [(int) $a['link']['weight'], $a['link']['title']] <=> [(int) $b['link']['weight'], $b['link']['title']];
++    });
++    return $items;
++  }
++
++  /**
+    * Get the current title from the node form.
+    */
+   protected function getCurrentTitle(array $form, FormStateInterface $form_state) {

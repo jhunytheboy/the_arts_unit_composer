@@ -341,6 +341,9 @@
             "drupal/book": {
                 "Keep book navigation (pager and tree block) visible on child pages when the book's top page is unpublished ( related: https://www.drupal.org/project/drupal/issues/3020298 )" : "private/patches/book-navigation-visible-unpublished-root.patch"
             },
+            "drupal/book_link_weight": {
+                "Load the sibling weight table uncached: bookSubtreeData() shares one access-filtered cache entry across users, so an anonymous-built entry drops unpublished pages and the edited page gets appended at the bottom and saved with the last weight + 1" : "private/patches/book_link_weight-uncached-siblings.patch"
+            },
             "drupal/media_directories": {
                 "Allow seven subtheme to load claro library (based on https://www.drupal.org/project/media_directories/issues/3395412 )" : "private/patches/media_directories_seven_subtheme.patch"
             },
