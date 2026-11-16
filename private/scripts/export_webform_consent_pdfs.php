@@ -32,7 +32,7 @@
  *   1. The submission, rendered by Webform Entity Print (the same output as
  *      the "PDF documents" export): consent wording, answers, signature,
  *      submitted time and IP address.
- *   2. "Program description at time of signing": the node revision that was
+ *   2. Program description at time of signing: the node revision that was
  *      published when the person submitted, so wording like "Project as
  *      described above" can still be read once the page changes.
  *
@@ -184,12 +184,12 @@ $description_html = static function ($revision) use (&$description_cache, $descr
       $parts[] = $render($revision->get($field)->view(['label' => $field === 'body' ? 'hidden' : 'above']));
     }
   }
-  $when = \Drupal::service('date.formatter')->format($revision->getRevisionCreationTime(), 'custom', 'j F Y g:ia');
+  $when = \Drupal::service('date.formatter')->format($revision->getRevisionCreationTime(), 'custom', 'j F Y, g:i a');
   $url = $revision->toUrl('canonical', ['absolute' => TRUE])->toString();
   $html = '<div style="page-break-before: always;"></div>'
     . '<h2>Program description at time of signing</h2>'
-    . '<p><em>This is the web page the form was submitted from, as published when the person signed. '
-    . 'It explains phrases such as "Project as described above" and "Venues as specified above".</em></p>'
+    . '<p>This is the web page the form was submitted from, as it was published when the person signed. '
+    . 'It gives the program details the consent refers to.</p>'
     . '<p><strong>Page:</strong> ' . Html::escape($revision->label()) . '<br>'
     . '<strong>URL:</strong> ' . Html::escape($url) . '<br>'
     . '<strong>Node ' . $revision->id() . ', revision ' . $vid . ', published ' . $when . '</strong></p><hr>'
@@ -334,11 +334,11 @@ foreach ($groups as $group => $rows) {
       $details = '<div style="border:1px solid #999; padding:6px 10px; margin-bottom:12px; font-size:0.85em;">'
         . '<strong>Record details</strong><br>'
         . 'Submission ID ' . $row->sid . ' (serial #' . $submission->serial() . ')'
-        . ' &middot; submitted ' . $fmt($submission->getCompletedTime() ?: $submission->getCreatedTime()) . ' ' . date('T')
+        . ' &middot; submitted ' . date('j F Y, g:i:s a T', $submission->getCompletedTime() ?: $submission->getCreatedTime())
         . ' &middot; IP ' . Html::escape((string) $submission->getRemoteAddr()) . '<br>'
         . 'Form: ' . Html::escape($webform->label()) . ' (' . $webform_id . ')'
         . ' &middot; source page: ' . Html::escape($title) . ($node ? ' (node ' . $node->id() . ')' : '') . '<br>'
-        . 'Exported ' . date('Y-m-d H:i T', $started) . ' from ' . Html::escape(\Drupal::request()->getSchemeAndHttpHost())
+        . 'Exported ' . date('j F Y, g:i a T', $started) . ' from ' . Html::escape(\Drupal::request()->getSchemeAndHttpHost())
         . '</div>';
       $html = preg_replace('#(<body[^>]*>)#i', '$1' . str_replace(['\\', '$'], ['\\\\', '\\$'], $details), $html, 1);
       $html = $inline_images($html);
